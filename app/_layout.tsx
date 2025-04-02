@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Image,
+  ImageSourcePropType,
 } from "react-native";
 
 // ---------- Types & Data ----------
@@ -15,7 +16,7 @@ import {
 interface CarouselItem {
   id: string;
   title: string;
-  image: string;
+  image: ImageSourcePropType;
   subtitle: string;
 }
 
@@ -24,22 +25,19 @@ const carouselData: CarouselItem[] = [
     id: "1",
     title: "Harvest",
     subtitle: "Bold design meets timeless beauty",
-    image:
-      "https://s3-alpha-sig.figma.com/img/93ba/0f64/7fbd57320d3743b8da9d72972afa02a9?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ej9NbMwpqaA~QebCkPn1BkvRSUrI~nQEYjP1~WC1ZZuGDGBaStxhA-AJvw0Jr0qrhYIuB1rxfYlvOI3QvZFn7h9FySXgVhKbJ~8XDjqoOOHZTL5P7GoAF26-CSwk1fe5do1pYQSHf0qJj4eNRlJludBs4koZUBQZ1wMhvvyiUpD6MXSHu8u4i7KViYiL95Mx0syZ75hqC7WBIJj5Q9qh51WiZet8JsD4xsCwEf0-tT7eeIdJmpB9bO2CAfqiWKOLTPlnJh-gGnbjOCayyOapqb96ARoOs0ojGjnSZ5Lb5dK3QNk2AN7ucpMYir0JmpMlW~lmeJCFr8hlhS3rauW-2w__",
+    image: require("@/assets/images/card1.png"),
   },
   {
     id: "2",
     title: "Stoneworks",
     subtitle: "Bold design meets timeless beauty",
-    image:
-      "https://s3-alpha-sig.figma.com/img/cc07/bcaa/d470152f9bf7f4fdc6f086b501a86f09?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NyE~q4sz~YeTe6Yag2QWSo6piFg9iUTCEhaei5aHb3~UkpfGcJi1qGljQUzU2KiKZ8-GKlIeGZV-2kWe3S1oNiaXXrXFO7w1ZenhO29xBC5dOighO0I7S3~eDTCGED7fq1F3zmJqRVccB2hZyHvzEieNEThIXzlaMy~kOqtaZwWe-j2OMIguj6opIXBnUjrdxl9e~0YSUoKwE5zga2bdIUnsRvyDiPMiahbj~WmTet-XJ2a9by6he1i~v8zOxuOR-o~3h6CC9pMAFlCt4dyJ2b1J01BaT2tme4-9NFts1DmVCQxuj8dGGDdY5JH9ykOdO6oooMD~fDbFG4Nre1H4ig__",
+    image: require("@/assets/images/card2.png"),
   },
   {
     id: "3",
     title: "Harvest",
     subtitle: "Bold design meets timeless beauty",
-    image:
-      "https://s3-alpha-sig.figma.com/img/4f63/8a21/f14264f50105850fc6c834f3d7f20fbe?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ms~QXCnPWKXd6t8HyB4cjRc-Ho3sHM3GAMTJWjH6Arak-NtQXdQUrqC1x6uJr6JKeVjwgO2jB0xyHQGbTt16nbfZrtTqWKMFrY3vgMpuyshftniONrNUpbLn5f5CKShJjJYzRs5S3tGq2nhHAIcbtkkZmpEb22ttqLgPP4A3F-4jiPsysodOfZy9wkBiuUSvYN6GQAbZsg~181Z6l1abW3jQvtFXurkifSFgrjAtLqZh6daAZomINtz87XR7hpTTRNd477wIXSBCaosA7JOTgCbSY1SfNfga6ssNdrix8mELqlWrJmcUNWJXrhZg1iuR29qVRwTTAUr1mqMqkXTuSg__",
+    image: require("@/assets/images/card3.png"),
   },
 ];
 
@@ -51,7 +49,7 @@ const { width, height } = Dimensions.get("window");
 // ---------- Components ----------
 
 const CarouselItemComponent: React.FC<{ item: CarouselItem }> = ({ item }) => (
-  <ImageBackground style={styles.carouselItem} source={{ uri: item.image }}>
+  <ImageBackground style={styles.carouselItem} source={item.image}>
     <View style={styles.carouselItemContent}>
       <Text style={styles.carouselItemTitle}>{item.title}</Text>
       <Text style={styles.carouselItemSubtitle}>{item.subtitle}</Text>
