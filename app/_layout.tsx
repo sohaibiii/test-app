@@ -9,7 +9,10 @@ import {
   Dimensions,
   Image,
   ImageSourcePropType,
+  Platform,
 } from "react-native";
+
+const isAndroid = Platform.OS === "android";
 
 // ---------- Types & Data ----------
 
@@ -159,7 +162,7 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   menuContainer: {
-    marginTop: height * 0.06,
+    marginTop: isAndroid ? height * 0.02 : height * 0.06,
     alignItems: "flex-end",
     paddingHorizontal: 20,
   },
@@ -209,7 +212,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   carouselItemContent: {
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
     padding: 10,
     borderRadius: 10,
   },
